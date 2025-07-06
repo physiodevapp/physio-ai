@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for physio-ai on 2025-07-05T21:54:36+02:00
+# fly.toml app configuration file generated for physio-ai on 2025-07-06T10:18:49+02:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -14,18 +14,15 @@ kill_timeout = '5s'
 [build]
   dockerfile = 'Dockerfile'
 
-# [deploy]
-#   release_command = 'python scripts/setup_embeddings.py'
-
 [env]
-  LOCAL_MODE = '0'
+  PORT = 8080
 
 [[mounts]]
   source = 'chroma_data'
   destination = '/app/chroma_db'
 
 [http_service]
-  internal_port = 8000
+  internal_port = 8080
   force_https = true
   auto_stop_machines = 'stop'
   auto_start_machines = true
