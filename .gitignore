@@ -243,3 +243,6 @@ $RECYCLE.BIN/
 # Asegurar que scripts/ nunca sea ignorado
 !scripts/
 
+# Ignorar PDFs
+app/data/*.pdf
+
