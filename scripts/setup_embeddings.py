@@ -1,8 +1,14 @@
 import sys
 from pathlib import Path
-sys.path.append(str(Path(__file__).resolve().parent))
 
-from extraer_embeddings import extraer_texto_completo, dividir_por_subgrupos, generar_embeddings, guardar_resultado
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+
+from extraer_embeddings import (
+    extraer_texto_completo,
+    dividir_por_subgrupos,
+    generar_embeddings,
+    guardar_resultado,
+)
 from cargar_en_chroma import cargar_datos_en_chroma
 
 def run_pipeline():

@@ -3,6 +3,8 @@ import re
 import json
 from sentence_transformers import SentenceTransformer
 
+from pathlib import Path
+
 # Cargar modelo
 modelo = SentenceTransformer('all-MiniLM-L6-v2')
 
@@ -28,7 +30,10 @@ def generar_embeddings(fragmentos):
 # Guardar resultados
 def guardar_resultado(fragmentos, embeddings):
     datos = [{"texto": t, "embedding": e.tolist()} for t, e in zip(fragmentos, embeddings)]
-    with open("resultado_por_subgrupos.json", "w", encoding="utf-8") as f:
+
+    ruta_json = Path(__file__).resolve().parent.parent / "app" / "data" / "resultado_por_subgrupos.json"
+    
+    with open(ruta_json, "w", encoding="utf-8") as f:
         json.dump(datos, f, ensure_ascii=False, indent=2)
 
 # Ejecución

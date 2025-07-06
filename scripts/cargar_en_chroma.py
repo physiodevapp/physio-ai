@@ -1,8 +1,16 @@
 import json
 from app.core.chroma_client import get_chroma_client
 
+from pathlib import Path
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
 def cargar_datos_en_chroma():
-    with open("resultado_por_subgrupos.json", encoding="utf-8") as f:
+    ruta_json = Path(__file__).resolve().parent.parent / "app" / "data" / "resultado_por_subgrupos.json"
+    
+    with open(ruta_json, encoding="utf-8") as f:
         datos = json.load(f)
 
     client = get_chroma_client()
